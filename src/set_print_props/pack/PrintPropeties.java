@@ -7,7 +7,6 @@ import forms.pack.Point;
 import forms.pack.Rectangle;
 import forms.pack.Segment;
 import forms.pack.Square;
-
 public class PrintPropeties {
 	String checkVisibility(boolean visible) {
 		if(visible == true)	return "Visible";
@@ -16,6 +15,29 @@ public class PrintPropeties {
 	
 	int countLength(int p1, int p2) {		
 		return Math.abs(p1 - p2);
+	}
+	
+	public void foo(Object o) {
+		  if(o instanceof Ellipse) {
+			  if(((Ellipse)o).getVerticRadius() != ((Ellipse)o).getHorizRadius())
+				  printType((Ellipse)o);
+			  else
+				  printType((Circle)o);	  
+			  }else
+				  if(o instanceof Rectangle) {
+					  if(countLength(((Rectangle)o).getStartPoint().getX(), ((Rectangle)o).getEndPoint().getX()) != countLength(((Rectangle)o).getStartPoint().getY(), ((Rectangle)o).getEndPoint().getY()))
+						  printType((Rectangle)o);
+					  else printType((Square)o);
+				  }else 
+					  if(o instanceof Segment) {
+						  printType((Segment)o);
+					  }else
+						  if(o instanceof Point) {
+							  printType((Point)o);
+						  }else
+							  if(o instanceof Form) {
+								  printType((Form)o);
+							  }				  
 	}
 	
     void printType(Form x) {
