@@ -17,7 +17,7 @@ public class PrintPropeties {
 		return Math.abs(p1 - p2);
 	}
 	
-	public void foo(Object o) {
+	public void foo(Form o) {
 		  if(o instanceof Ellipse) {
 			  if(((Ellipse)o).getVerticRadius() != ((Ellipse)o).getHorizRadius())
 				  printType((Ellipse)o);
