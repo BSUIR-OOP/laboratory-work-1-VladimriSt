@@ -1,65 +1,70 @@
 package forms.pack;
-public class Forms_List{
-	
-	Form form;
-	Point point;
-	Segment segment;
-	Rectangle rectangle;
-	Square square;
-	Ellipse ellipse;
-	Circle circle;
-	
-	private Form getForm() {
-		return form;
-	}
-	private void setForm(Form form) {
-		this.form = form;
-	}
-	private Point getPoint() {
-		return point;
-	}
-	private void setPoint(Point point) {
-		this.point = point;
-	}
-	private Segment getSegment() {
-		return segment;
-	}
-	private void setSegment(Segment segment) {
-		this.segment = segment;
-	}
-	private Rectangle getRectangle() {
-		return rectangle;
-	}
-	private void setRectangle(Rectangle rectangle) {
-		this.rectangle = rectangle;
-	}
-	private Square getSquare() {
-		return square;
-	}
-	private void setSquare(Square square) {
-		this.square = square;
-	}
-	private Ellipse getEllipse() {
-		return ellipse;
-	}
-	private void setEllipse(Ellipse ellipse) {
-		this.ellipse = ellipse;
-	}
-	private Circle getCircle() {
-		return circle;
-	}
-	private void setCircle(Circle circle) {
-		this.circle = circle;
-	}
-	
-	public Forms_List(Form form, Point point, Segment segment, Rectangle rectangle, Square square, Ellipse ellipse, Circle circle) {
-		this.form = form;
-		this.point = point;
-		this.segment = segment;
-		this.rectangle = rectangle;
-		this.square = square;
-		this.ellipse = ellipse;
-		this.circle = circle;
-	}
 
+import set_print_props.pack.PrintPropeties;
+
+public class Forms_List {
+	Forms_List next;
+	Object lst_el;
+	
+    private Forms_List head;  
+    private Forms_List tail;   
+    public void addFront(Object lst_el)
+    {
+    	Forms_List a = new Forms_List();  
+    	a.lst_el = lst_el;          
+       
+        if(head == null)        
+        {                      
+            head = a;            
+            tail = a;
+        }
+        else {
+            a.next = head;    
+            head = a;    
+        }
+    }
+
+    public void printList()             
+    {
+    	PrintPropeties x = new PrintPropeties();
+    	Forms_List t = this.head;       
+        while (t != null)           
+        	{
+        	x.foo(t.lst_el);
+            t = t.next;                   
+        }
+        System.out.println();
+    }
+
+    public void delEl(Object lst_el)       
+    {
+        if(head == null)     
+            return;           
+
+        if (head == tail) {  
+            head = null;      
+            tail = null;
+            return;            
+        }
+
+        if (head.lst_el == lst_el) {
+            head = head.next;      
+            return;              
+        }
+
+        Forms_List t = head;    
+        while (t.next != null) {  
+            if (t.next.lst_el == lst_el) { 
+                if(tail == t.next)     
+                {
+                    tail = t;      
+                }
+                t.next = t.next.next;  
+                return;                
+            }
+            t = t.next;              
+        }
+    }
+
+	
 }
