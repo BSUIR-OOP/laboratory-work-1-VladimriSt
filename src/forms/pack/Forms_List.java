@@ -4,11 +4,11 @@ import set_print_props.pack.PrintPropeties;
 
 public class Forms_List {
 	Forms_List next;
-	Object lst_el;
+	Form lst_el;
 	
     private Forms_List head;  
     private Forms_List tail;   
-    public void addFront(Object lst_el)
+    public void addFront(Form lst_el)
     {
     	Forms_List a = new Forms_List();  
     	a.lst_el = lst_el;          
